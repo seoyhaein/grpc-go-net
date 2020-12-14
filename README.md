@@ -7,6 +7,6 @@
 >
 > 
 * protobuf 
-> https://github.com/protocolbuffers/protobuf-go – currently go protobuf official site.
-> https://pkg.go.dev/google.golang.org/protobuf  - documentation
+> https://github.com/protocolbuffers/protobuf-go – currently go protobuf official site. \
+> https://pkg.go.dev/google.golang.org/protobuf  - documentation \
 > https://developers.google.com/protocol-buffers/docs/overview - protobuf developing guide
