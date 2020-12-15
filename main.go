@@ -6,6 +6,8 @@ import (
 	"google.golang.org/grpc/reflection"
 	"net"
 	"os"
+
+	pb "github.com/seoyhaein/grpc-go-net/protos"
 )
 
 var log hclog.Logger
@@ -14,7 +16,7 @@ const (
 	port = ":50051"
 )
 
-type server struct{} // 여기에다가 추가해줘야 함.
+type server struct{ pb.UnimplementedGreeterServer } // 여기에다가 추가해줘야 함.
 
 func main() {
 	log = hclog.Default()
