@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"github.com/hashicorp/go-hclog"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
@@ -18,6 +19,12 @@ const (
 
 type server struct{ pb.UnimplementedGreeterServer } // 여기에다가 추가해줘야 함.
 
+// SayHello implements helloworld.GreeterServer
+func (s *server) SayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) {
+	log.Info("Received: %v", in.GetName())
+	return &pb.HelloReply{Message: "Hello " + in.GetName()}, nil
+}
+
 func main() {
 	log = hclog.Default()
 
@@ -30,6 +37,7 @@ func main() {
 
 	s := &server{}
 	// grpc 서비스를 등록해야함.
+	pb.RegisterGreeterServer(gs, s)
 
 	// create a TCP socket for inbound server connections
 	l, err := net.Listen("tcp", port)
